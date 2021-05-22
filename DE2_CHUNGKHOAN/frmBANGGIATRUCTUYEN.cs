@@ -12,10 +12,9 @@ namespace DE2_CHUNGKHOAN
 {
     public partial class frmBGTT : DevExpress.XtraEditors.XtraForm
     {
-        public string m_connect = @"Data Source=MAIANH;Initial Catalog=DE2;User ID=sa;Password=12";
-        //private const String tableName = "BANGGIATRUCTUYEN";
+        public string connectString = @"Data Source=MAIANH;Initial Catalog=DE2;User ID=sa;Password=12";
 
-        SqlConnection con = null;
+        public SqlConnection connection = null;
         public delegate void NewHome();
         public event NewHome OnNewHome;
 
@@ -27,21 +26,23 @@ namespace DE2_CHUNGKHOAN
             {
                 SqlClientPermission ss = new SqlClientPermission(System.Security.Permissions.PermissionState.Unrestricted);
                 ss.Demand();
-            }
-            catch (Exception)
+
+                //hủy kết nối 
+                SqlDependency.Stop(connectString);
+
+
+                // Bắt đầu kết nối 
+                SqlDependency.Start(connectString);
+
+                //tạo kết nối dependency  
+                connection = new SqlConnection(connectString);
+            } 
+            catch (Exception err)
             {
-                throw;
+                MessageBox.Show("Ban chua mo dich vu SQL Broker", err.Message, MessageBoxButtons.OK);
             }
 
-            //hủy kết nối 
-            SqlDependency.Stop(m_connect);
-
-
-            // Bắt đầu kết nối 
-            SqlDependency.Start(m_connect);
-
-            //tạo kết nối dependency  
-            con = new SqlConnection(m_connect);
+           
         }
 
         private void bANGGIATRUCTUYENBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -73,7 +74,6 @@ namespace DE2_CHUNGKHOAN
 
         public void Form1_OnNewHome()
         {
-            //chạy câu lệnh muốn thực hiện OnChange
             ISynchronizeInvoke i = (ISynchronizeInvoke)this;
             if (i.InvokeRequired)//tab
             {
@@ -86,19 +86,18 @@ namespace DE2_CHUNGKHOAN
         }
 
         // load dữ liệu
-        //Tạo đối tượng SqlConnection và SqlCommand để kết nối với máy chủ và định nghĩa câu truy vấn
         void LoadData()
         {
             DataTable dt = new DataTable();
             try
             {
                 // mở kết nối sqlConnection
-                if (con.State == ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                 {
-                    con.Open();
+                    connection.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("EXEC SelectAllBGTT", con);
+                SqlCommand cmd = new SqlCommand("EXEC SelectAllBGTT", connection);
                 cmd.Notification = null;
 
 
@@ -117,8 +116,6 @@ namespace DE2_CHUNGKHOAN
             }
         }
 
-
-        //phương thức xử lý
         public void dependency_OnChange(object sender, SqlNotificationEventArgs e)
         {
             SqlDependency de = sender as SqlDependency;
@@ -127,6 +124,11 @@ namespace DE2_CHUNGKHOAN
             {
                 OnNewHome();
             }
+        }
+
+        private void bANGGIATRUCTUYENDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

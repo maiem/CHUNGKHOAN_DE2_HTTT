@@ -54,6 +54,7 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dE2DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bANGGIATRUCTUYENBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bANGGIATRUCTUYENDataGridView)).BeginInit();
@@ -86,7 +87,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
             this.bANGGIATRUCTUYENDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.bANGGIATRUCTUYENDataGridView.AutoGenerateColumns = false;
-            this.bANGGIATRUCTUYENDataGridView.BackgroundColor = System.Drawing.Color.Black;
+            this.bANGGIATRUCTUYENDataGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -112,7 +113,7 @@
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15});
-            this.bANGGIATRUCTUYENDataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bANGGIATRUCTUYENDataGridView.Cursor = System.Windows.Forms.Cursors.Default;
             this.bANGGIATRUCTUYENDataGridView.DataSource = this.bANGGIATRUCTUYENBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
@@ -124,10 +125,9 @@
             this.bANGGIATRUCTUYENDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.bANGGIATRUCTUYENDataGridView.EnableHeadersVisualStyles = false;
             this.bANGGIATRUCTUYENDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.bANGGIATRUCTUYENDataGridView.Location = new System.Drawing.Point(2, 12);
+            this.bANGGIATRUCTUYENDataGridView.Location = new System.Drawing.Point(12, 87);
             this.bANGGIATRUCTUYENDataGridView.Name = "bANGGIATRUCTUYENDataGridView";
             this.bANGGIATRUCTUYENDataGridView.ReadOnly = true;
-            this.bANGGIATRUCTUYENDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -139,8 +139,10 @@
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
             this.bANGGIATRUCTUYENDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.bANGGIATRUCTUYENDataGridView.Size = new System.Drawing.Size(1306, 329);
+            this.bANGGIATRUCTUYENDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
+            this.bANGGIATRUCTUYENDataGridView.Size = new System.Drawing.Size(1306, 314);
             this.bANGGIATRUCTUYENDataGridView.TabIndex = 1;
+            this.bANGGIATRUCTUYENDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bANGGIATRUCTUYENDataGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -260,24 +262,37 @@
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
             this.dataGridViewTextBoxColumn15.Width = 80;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(467, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(418, 45);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "BẢNG GIÁ TRỰC TUYẾN";
+            // 
             // frmBGTT
             // 
-            this.Appearance.BackColor = System.Drawing.Color.Black;
+            this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.ForeColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
             this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1298, 385);
+            this.ClientSize = new System.Drawing.Size(1281, 413);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.bANGGIATRUCTUYENDataGridView);
             this.Name = "frmBGTT";
-            this.Text = "BẢNG GIÁ TRỰC TUYẾN";
+            this.Text = "BGTT";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmBGTT_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dE2DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bANGGIATRUCTUYENBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bANGGIATRUCTUYENDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -303,6 +318,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.Label label1;
     }
 }
 
